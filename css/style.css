@@ -59,16 +59,30 @@
 
 .main {
     font-family: 'Roboto Slab', serif;
-    background-color: #FFFFFF;
+    background-color: #ececec;
     font-size: 16px;
 }
 
 /* SECTION NO 1 */
 
 .section-1 {
-    background-color: #F2F2F2;
-    height: 450px;
+    /* Set the image as the background */
+    background-image: url(../images/main-image.jpg);
+    
+    /* 'center' ensures the picture is placed at the center of the section */
+    background-position: center 90%;
+    
+    /* 'contain' shows the full image without cutting it; 
+       use 'cover' if you want it to fill the entire space even if edges cut slightly */
+    background-size: contain; 
+    background-repeat: no-repeat;
+    
+    /* Increase this value to make the background section "wider" (taller) */
+    height: 600px;
+    
+    background-color: #ececec; /* Keeps the grey background for areas the photo doesn't reach */
     padding: 0px;
+    border: none;
 }
 
 .section-1-inner-col {
@@ -76,41 +90,33 @@
 }
 
 .image-frame {
-    width: 380px;
-    height: 380px;
-    background-image: url(../images/profile-image.png);
-    background-position: center;
-    background-size: cover;
-    border: 8px solid #FFFFFF;
-    border-radius: 50%;
-    position: absolute;
-    top: 110px;
-    left: 50%;
-    transform: translateX(-50%);
+    display: none; 
 }
 
 @media (max-width: 768px) {
     .section-1 {
-        height: 390px;
+        height: 500px;
+        background-position: center 90%;
     }
 
     .image-frame {
         width: 300px;
         height: 300px;
-        border: 6px solid #FFFFFF;
+        /* border: 6px solid #FFFFFF; */
     }
 }
 
 @media (max-width: 426px) {
     .section-1 {
-        height: 230px;
+        height: 400px;
+        background-position: center 70%;
     }
 
     .image-frame {
         width: 200px;
-        height: 200px;
+        height: 400px;
         top: 40px;
-        border: 5px solid #FFFFFF;
+        /* border: 5px solid #FFFFFF; */
     }
 }
 
@@ -122,7 +128,7 @@
     .image-frame {
         width: 150px;
         height: 150px;
-        border: 3px solid #FFFFFF;
+        /* border: 3px solid #FFFFFF; */
     }
 }
 
@@ -130,8 +136,11 @@
 
 .section-2 {
     margin: 60px 0 0 0;
-    padding: 100px 0px 50px 0px;
+    /* padding: 100px 0px 50px 0px; */
     font-family: 'Roboto Slab', serif;
+    background-color: #ececec;
+    padding: 60px 0;
+    margin: 0;
 }
 
 .primary-heading {
@@ -140,6 +149,7 @@
     letter-spacing: 4px;
     text-transform: uppercase;
     line-height: 1.2;
+    margin-bottom: 50px;
 }
 
 .primary-heading-bold {
@@ -164,6 +174,76 @@
     color: #000000;
 }
 
+.custom-work-img {
+    max-width: 150px; /* Adjust this value to make them even smaller or larger */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centers the images within their columns */
+    transition: transform 0.3s ease;
+}
+
+.custom-work-img:hover {
+    transform: scale(1.1); /* Optional: adds a slight zoom effect when hovering */
+}
+
+/* Ensure the row centers the 5 images on large screens */
+.section-2-inner-row {
+    max-width: 1140px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px; /* Adds space between the images */
+}
+
+/* Center labels and style them */
+.work-label {
+    text-align: center;
+    margin-top: 15px;        /* Space between image and text */
+    font-family: 'Roboto Slab', serif; 
+    font-size: 16px;         /* Adjust as needed */
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #333333;
+    letter-spacing: 1px;
+}
+
+/* Ensure the columns center their content */
+.section-2-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;     /* Space for mobile stacking */
+}
+
+/* Keep your existing small image size */
+.custom-work-img {
+    max-width: 150px; 
+    height: auto;
+    display: block;
+    max-width: 300px; 
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: adds slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds depth */
+}
+
+.work-link {
+    text-decoration: none !important;
+    color: inherit;
+    display: block; /* Makes the entire area clickable */
+    transition: opacity 0.3s ease;
+}
+
+.work-link:hover {
+    opacity: 0.8; /* Slight fade effect when hovering */
+}
+
+.work-link:hover .custom-work-img {
+    transform: scale(1.02); /* Slight zoom on the image when hovering */
+    transition: transform 0.3s ease;
+}
+
 @media (max-width: 768px) {
     .section-2 {
         margin-top: 0px;
@@ -184,6 +264,10 @@
 
     .section-2-button {
         text-decoration: underline;
+    }
+
+    .custom-work-img {
+        max-width: 200px;
     }
 }
 
@@ -364,7 +448,8 @@
 }
 
 .text__light {
-    font-weight: 300;
+    font-weight: 200;
+    font-size: 30px;
 }
 
 .section-4-right {
@@ -658,9 +743,11 @@
 }
 
 .masonry .grid {
-    display: inline-block;
-    margin-bottom: 16px;
+    display: block;
+    margin-bottom: 30px;
     position: relative;
+    overflow: hidden;
+    height: fit-content;
 }
 
 .masonry .grid:before {
@@ -673,6 +760,7 @@
     left: 0;
     background-color: rgba(0, 0, 0, 0.2);
     transition: all 0.4s ease-in-out;
+    z-index: 1;
 }
 
 .masonry .grid:hover::before {
@@ -688,6 +776,8 @@
 .masonry .grid img {
     width: 100%;
     border-radius: 5px;
+    height: auto; /* Maintains aspect ratio */
+    display: block;
 }
 
 .masonry .grid__title {
@@ -707,6 +797,7 @@
     right: 0;
     top: 0;
     bottom: 0;
+    z-index: 10;
 }
 
 .masonry .grid__body {
@@ -719,6 +810,8 @@
     color: #fff;
     display: flex;
     flex-direction: column;
+    justify-content: center; 
+    align-items: center;
 }
 
 .masonry .grid__tag {
@@ -726,11 +819,12 @@
     color: #333;
     border-radius: 5px;
     padding: 4px 10px;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
+    width: fit-content;
 }
 
 .mt-auto {
-    margin-top: auto;
+    /* margin-top: auto; */
 }
 
 .sec5-btn {
@@ -1176,6 +1270,42 @@
 
 .section-footer-inner {
     color: #FFFFFF;
+}
+
+/* Footer Custom Styles */
+.footer-profile-img {
+    max-width: 100%; /* Adjust size as needed */
+    width: 250px;
+    height: auto;
+    /* filter: brightness(0) invert(1); /* Optional: makes the black logo white to match footer background */
+}
+
+.footer-qr-img {
+    width: 100px; /* Standard size for QR codes in footers */
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #FFFFFF;
+}
+
+.footer-headline {
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+}
+
+.footer-text {
+    color: #C5C5C5;
+}
+
+@media (max-width: 576px) {
+    .footer-profile-img {
+        max-width: 140px;
+    }
+    
+    .footer-qr-img {
+        width: 80px;
+    }
 }
 
 @media (max-width: 426px) {
